@@ -1,0 +1,49 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependency directories
+node_modules/
+
+# Build output
+dist/
+build/
+dist-ssr/
+storybook-static/
+
+# Caches
+.cache/
+.parcel-cache/
+.turbo/
+.eslintcache
+.stylelintcache
+
+# Framework outputs
+.next/
+.nuxt/
+.svelte-kit/
+
+# Testing
+coverage/
+
+# Environment files
+# 提交通用环境文件，忽略仅限本地开发者的私有覆盖
+.env.local
+.env.*.local
+!.env.example
+
+# Editors
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+tmp/
+temp/
