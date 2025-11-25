@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue'
 import { useCounterStore } from '@/stores/counter'
 import { getHello } from './apis/index'
 import type { HelloResponse } from './types'
+import { throttle } from 'lodash-es'
 
 // Pinia store
 const counterStore = useCounterStore()
@@ -38,6 +39,10 @@ const incrementCounter = () => {
 const resetCounter = () => {
   counterStore.reset()
 }
+
+// 节流版本的事件处理函数（1000ms 间隔）
+const throttledIncrement = throttle(incrementCounter, 1000, { leading: true, trailing: false })
+const throttledReset = throttle(resetCounter, 1000, { leading: true, trailing: false })
 </script>
 
 <template>
@@ -71,8 +76,8 @@ const resetCounter = () => {
         <span class="counter-double">双倍值：{{ counterStore.double }}</span>
       </div>
       <div class="counter-controls">
-        <button @click="incrementCounter" class="btn btn-primary">增加计数</button>
-        <button @click="resetCounter" class="btn">重置计数</button>
+        <button @click="throttledIncrement" class="btn btn-primary">增加计数</button>
+        <button @click="throttledReset" class="btn">重置计数</button>
       </div>
     </section>
 
