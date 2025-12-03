@@ -1,5 +1,4 @@
-import { defineConfig } from 'vitest/config'
-import { loadEnv } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import { fileURLToPath, URL } from 'node:url'
 import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
@@ -23,21 +22,9 @@ export default defineConfig(({ mode }) => {
       dts: 'src/auto-imports.d.ts',
     }),
     Components({
-      // 在 Vitest 环境下关闭样式自动引入，避免 .css ESM 加载报错
-      resolvers: [VantResolver({ importStyle: process.env.VITEST ? false : true })],
+      resolvers: [VantResolver({ importStyle: true })],
       dts: 'src/components.d.ts',
     }),
     ],
-    test: {
-      environment: 'jsdom',
-      globals: true,
-      setupFiles: './tests/setup.ts',
-      css: true,
-      coverage: {
-        provider: 'v8',
-        reporter: ['text', 'lcov', 'html'],
-        reportsDirectory: './coverage',
-      },
-    },
   }
 })
