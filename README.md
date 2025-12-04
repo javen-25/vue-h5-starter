@@ -1,5 +1,19 @@
-# Vue 3 + TypeScript + Vite
+# 我的 H5 快速启动模板
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+自用的 Vue 3 + TypeScript + Vite 起步模版，仅保留最基础的移动端开发配置，方便直接拉取后开写页面。
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## 包含的特性
+- Vue 3 + TS + Vite 基础脚手架，`<script setup>` 书写体验
+- Vue Router + 简单路由守卫（登录校验、动态标题）
+- Pinia 状态管理，内置 `pinia-plugin-persistedstate` 持久化
+- Vant 4 组件库，按需自动引入（`unplugin-auto-import` / `unplugin-vue-components` + `VantResolver`）
+- Axios 轻量封装（统一 baseURL、Token 注入、错误消息规范化）
+- PostCSS `px-to-viewport` 移动端适配，默认 375 设计稿
+- MSW 开关式 Mock 能力（`VITE_ENABLE_MSW=true` 时启用）
+- `normalize.css` + 基础全局样式
+
+## 快速开始
+```bash
+npm install
+npm run dev
+```
