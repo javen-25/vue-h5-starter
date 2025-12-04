@@ -14,9 +14,8 @@ function goHome() {
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .not-found {
   padding: 16px;
 }
 </style>
-

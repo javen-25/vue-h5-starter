@@ -7,7 +7,7 @@
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .layout {
   min-height: 100vh;
 }
