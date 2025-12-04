@@ -1,7 +1,10 @@
+const autoprefixer = require('autoprefixer')
 const pxToViewport = require('postcss-px-to-viewport-8-plugin')
 
 module.exports = {
   plugins: [
+    // 自动补全各端常用前缀，配合 browserslist 生效
+    autoprefixer(),
     pxToViewport({
       viewportWidth: 375,
       unitPrecision: 6,

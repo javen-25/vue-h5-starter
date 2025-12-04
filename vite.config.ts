@@ -4,6 +4,7 @@ import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { VantResolver } from 'unplugin-vue-components/resolvers'
+import Inspector from 'vite-plugin-vue-inspector' 
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
@@ -17,6 +18,7 @@ export default defineConfig(({ mode }) => {
     },
     plugins: [
     vue(),
+    Inspector(),
     AutoImport({
       imports: ['vue'],
       dts: 'src/auto-imports.d.ts',
