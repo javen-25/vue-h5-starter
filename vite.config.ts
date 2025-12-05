@@ -1,32 +1,20 @@
-import { defineConfig, loadEnv } from 'vite'
-import { fileURLToPath, URL } from 'node:url'
-import vue from '@vitejs/plugin-vue'
-import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
-import { VantResolver } from 'unplugin-vue-components/resolvers'
-import Inspector from 'vite-plugin-vue-inspector' 
+import { defineConfig } from 'vite'
+import { resolveEnv } from './config/env'
+import { alias } from './config/alias'
+import { createPlugins } from './config/plugins'
+import { resolveOutDir } from './config/build'
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, process.cwd(), '')
+  const { base } = resolveEnv(mode)
   return {
-    base: env.VITE_BASE || '/',
+    base,
     resolve: {
-      alias: {
-        '@': fileURLToPath(new URL('./src', import.meta.url)),
-      },
+      alias,
     },
-    plugins: [
-    vue(),
-    Inspector(),
-    AutoImport({
-      imports: ['vue'],
-      dts: 'src/auto-imports.d.ts',
-    }),
-    Components({
-      resolvers: [VantResolver({ importStyle: true })],
-      dts: 'src/components.d.ts',
-    }),
-    ],
+    plugins: createPlugins(),
+    build: {
+      outDir: resolveOutDir(mode),
+    },
   }
 })

@@ -17,5 +17,6 @@ declare module 'vue' {
     VanCell: typeof import('vant/es')['Cell']
     VanCellGroup: typeof import('vant/es')['CellGroup']
     VanNavBar: typeof import('vant/es')['NavBar']
+    VanTag: typeof import('vant/es')['Tag']
   }
 }
